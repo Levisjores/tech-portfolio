@@ -132,13 +132,17 @@
         <div class="content-box fade-in" style="display: inline;">
           <h1> Contact</h1>
           <div class="skills" >
-            WhatsApp: <a href="">+237 653710473 </a>
+            WhatsApp: <a href="https://wa.me/237673713395?text=Bonjour ING">+237 653710473 / <a href="https://wa.me/237659710473?text=Bonjour ING">+237 659710473</a> </a>
           </div>
           <div class="skills">
+            Email: <a href="mailto:njiminjeumenlevis@gmail.com">njiminjeumenlevis@gmail.com</a>
+          </div>
+          <div class="card">
+            github: <a href="https://github.com/Levisjores">Levisjores</a>
+          </div>
+          <div class="card">
             Email / WhatsApp
           </div>
-          <div class="card">Email / WhatsApp</div>
-          <div class="card">Email / WhatsApp</div>
         </div>
       </section>
     </main>
@@ -151,11 +155,12 @@ const activeTab = ref("about")
 const menuOpen = ref(false)
 
 const skills = [
-  { name: 'JavaScript', details: 'Maîtrise avancée de JavaScript. Expérience en développement côté client et serveur avec Node.js.', level: 90 },
-  { name: 'Vue.js', details: 'Expertise en Vue 3 avec Composition API. Création de composants réutilisables et gestion d\'état complexe.', level: 85 },
-  { name: 'CSS', details: 'Design responsive, animations CSS avancées, Flexbox et Grid. Création de interfaces modernes.', level: 88 },
-  { name: 'Python', details: 'Développement backend, scripts d\'automatisation, et machine learning avec TensorFlow.', level: 80 },
-  { name: 'React', details: 'Hooks, Context API, et gestion d\'état. Intégration d\'APIs et optimisation de performance.', level: 75 },
+  { name: 'PHP natif', details: 'Maîtrise avancée du langage PHP natif. Développement de solutions backend performantes, gestion de la logique métier et intégration avec des bases de données.', level: 90 },
+  { name: 'CodeIgniter', details: 'Expertise dans la création d’applications web robustes avec CodeIgniter. Mise en place de projets maintenables et évolutifs grâce à une architecture claire.', level: 75 },
+  { name: 'Laravel', details: 'Développement backend moderne avec Laravel. Gestion des API REST, authentification sécurisée, et intégration fluide avec des interfaces responsive.', level: 60 },
+  { name: 'JavaScript', details: 'Compétences solides en JavaScript pour le développement frontend interactif. Expérience avec les frameworks modernes et les bonnes pratiques de codage.', level: 85 },
+  { name: 'Vue.js', details: 'Conception d’interfaces utilisateur dynamiques et réactives. Expérience dans la création de SPA (Single Page Applications) avec une approche mobile-first.', level: 70 },
+  { name: 'Python', details: 'Programmation orientée scripts et automatisation. Utilisation de Python pour l’analyse de données, l’IA et le Q-Learning avec des bibliothèques comme Matplotlib, NumPy.', level: 75 },
 ];
 
 const selectedSkill = ref(null);
@@ -222,7 +227,7 @@ const selectProject = (project) => {
 
 /* FOND GLOBAL */
 #app {
-  background: linear-gradient(130deg, #667eea 50%, #764ba2 100%);
+  background: linear-gradient(90deg, #000000 30%,#2cb681 100%, #00eb1ffa 100%);
   min-height: 100vh;
   min-width: 100%;
 }
@@ -469,6 +474,8 @@ background: linear-gradient(135deg, #2cb681 50%, #51f704);
   color: #333;
   padding: 40px;
   border-radius: 18px;
+  border-style: groove;
+  border: linear-gradient(135deg, #f093fb 30%, #f5576c 100%);
   box-shadow: 0 20px 50px rgba(0,0,0,0.15);
   animation: slideIn 0.5s ease;
   width: 100%;
@@ -504,7 +511,7 @@ background: linear-gradient(135deg, #2cb681 50%, #51f704);
 }
 
 .project-details .date {
-  color: #999;
+  color: #14c06a;
   font-size: 0.95em;
   margin-top: 20px;
 }
@@ -643,6 +650,7 @@ background: linear-gradient(135deg, #2cb681 50%, #51f704);
     display: block;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
+    
   }
 
   .skills-right,

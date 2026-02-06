@@ -19,7 +19,7 @@
 
     <!-- CONTENU -->
     <main class="main">
-      <section v-if="activeTab==='about'" class="section">
+      <section id="about" class="section">
         <div class="content-box fade-in">
           <h1>Salut, moi c’est NJIMI NJEUMEN Levis Jores</h1>
           <p class="subtitle">Développeur Web • Ingénieur Réseau</p>
@@ -45,7 +45,7 @@
         </div>
       </section>
 
-      <section v-if="activeTab==='skills'" class="section">
+      <section id="skills" class="section">
         <div class="content-box fade-in">
           <h1>Compétences</h1>
           <div class="skills-container">
@@ -85,14 +85,14 @@
         </div>
       </section>
 
-      <section v-if="activeTab==='education'" class="section">
+      <section id="education" class="section">
         <div class="content-box fade-in">
           <h1>Formation</h1>
           <div class="card">Licence Informatique – Réseaux & Systèmes</div>
         </div>
       </section>
 
-      <section v-if="activeTab==='projects'" class="section">
+      <section id="projects" class="section">
         <div class="content-box fade-in">
           <h1>Projets</h1>
           <div class="projects-container">
@@ -128,7 +128,7 @@
         </div>
       </section>
 
-      <section v-if="activeTab==='contact'" class="section">
+      <section id="contact" class="section">
         <div class="content-box fade-in" style="display: inline;">
           <h1> Contact</h1>
           <div class="skills" >
@@ -169,29 +169,35 @@ const animationKey = ref(0);
 const projects = [
   { 
     name: 'Projet IA Réseau', 
-    description: 'Une application intelligente pour l\'analyse et la visualisation des réseaux informatiques avec IA.',
-    technologies: ['Python', 'TensorFlow', 'Vue.js', 'Node.js'],
-    date: 'Janvier 2024'
+    description: 'Une application intelligente pour l\'analyse du trafic réseau, et l\'optimisation du routage grace à un algorithme d\'IA.',
+    technologies: ['Python', 'Matplotlib', 'Numpy', 'Pandas', 'Scikit-learn', 'TKinter'],
+    date: 'Juin - Septembre 2025'
   },
   { 
     name: 'Plateforme Scolaire', 
-    description: 'Plateforme complète de gestion scolaire avec tableau de bord et suivi des étudiants.',
-    technologies: ['Vue.js', 'Firebase', 'Tailwind CSS'],
+    description: 'Plateforme complète de gestion complète d\'universités et écoles de formation avec tableau de bord et suivi des étudiants.',
+    technologies: ['HTML/CSS', 'MYSQL', 'PHP', 'CodeIgniter'],
     date: 'Novembre 2023'
   },
   { 
-    name: 'Chat en Temps Réel', 
-    description: 'Application de messagerie instantanée avec support des vidéos et partage de fichiers.',
-    technologies: ['WebSocket', 'React', 'Express.js'],
-    date: 'Septembre 2023'
+    name: 'BIG DATA, Hadoop et Spark', 
+    description: 'Déploiement d\'un cluster à trois nœuds Hadoop avec Spark pour le traitement et l\'analyse de données massives.',
+    technologies: ['Hadoop', 'Spark', 'Python'],
+    date: 'Avril 2025'
   },
 ];
 
 const selectedProject = ref(null);
 
 function changeTab(tab) {
-  activeTab.value = tab
   menuOpen.value = false
+  // Scroll vers la section avec un délai pour fermer le menu d'abord
+  setTimeout(() => {
+    const element = document.getElementById(tab)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, 100)
 }
 
 const selectSkill = (skill) => {
@@ -278,20 +284,24 @@ const selectProject = (project) => {
   display: none;
   font-size: 1.6em;
   cursor: pointer;
+  scroll-behavior: smooth;
 }
 
 /* MAIN */
 .main {
   padding-top: 100px;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 /* SECTION PREND TOUTE LA LARGEUR */
 .section {
   width: 100%;
-  padding: 0px 0%;
+  padding: 40px 0%;
   display: flex;
   justify-content: center;
+  min-height: auto;
+  scroll-margin-top: 100px;
 }
 
 

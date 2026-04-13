@@ -21,7 +21,7 @@
     <main class="main">
       <section id="about" class="section">
         <div class="content-box fade-in">
-          <h1>Salut, moi c’est NJIMI NJEUMEN Levis Jores</h1>
+          <h1>Salut, moi c\’est NJIMI NJEUMEN Levis Jores</h1>
           <p class="subtitle">Développeur Web • Ingénieur Réseau</p>
           <div class="skills-container">
             <div class="skills-left">
@@ -31,7 +31,9 @@
               </h1>
               <p style="font-family: 'Times New Roman', Times, serif; font-weight: bold; color: black; ">
                 Jeune dynamique et passionné par les nouvelles technologies, la programmation, 
-                les Réseaux et l'intelligence artificielle
+                les Réseaux et l'intelligence artificielle.
+                Je Travail chaque jour pour m'améliorer et me mettre a jour sur les dernieres technologies.
+                Je suis pationné par les Réseaux, L'intélligence artificielle notament son application dans les réseaux.
               </p>
             </div>
             </div>
@@ -92,6 +94,42 @@
         </div>
       </section>
 
+          <section id="projects" class="section">
+        <div class="content-box fade-in">
+          <h1>Expériences</h1>
+          <div class="projects-container">
+            <div class="projects-left">
+              <div class="card project" v-for="project in projects" @click="selectProject(project)" :class="{ active: selectedProject?.name === project.name }">
+                <div class="project-name">{{ project.name }}</div>
+
+                <!-- Inline project details shown on mobile under the clicked project -->
+                <div class="project-inline-details" v-if="selectedProject?.name === project.name" :key="animationKey">
+                  <div class="project-details">
+                    <h3>{{ selectedProject.name }}</h3>
+                    <p class="description">{{ selectedProject.description }}</p>
+                    <div class="technologies">
+                      <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
+                    </div>
+                    <p class="date">{{ selectedProject.date }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="projects-right">
+              <div class="project-details" v-if="selectedProject" :key="animationKey">
+                <h3>{{ selectedProject.name }}</h3>
+                <p class="description">{{ selectedProject.description }}</p>
+                <div class="technologies">
+                  <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
+                </div>
+                <p class="date">{{ selectedProject.date }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="projects" class="section">
         <div class="content-box fade-in">
           <h1>Projets</h1>
@@ -127,12 +165,13 @@
           </div>
         </div>
       </section>
+    
 
       <section id="contact" class="section">
         <div class="content-box fade-in" style="display: inline;">
           <h1> Contact</h1>
           <div class="skills" >
-            WhatsApp: <a href="https://wa.me/237673713395?text=Bonjour ING">+237 653710473 / <a href="https://wa.me/237659710473?text=Bonjour ING">+237 659710473</a> </a>
+            WhatsApp: <a href="https://wa.me/237673713395?text=Bonjour ING">+237 673710473</a> / <a href="https://wa.me/237659710473?text=Bonjour ING">+237 659710473</a>
           </div>
           <div class="skills">
             Email: <a href="mailto:njiminjeumenlevis@gmail.com">njiminjeumenlevis@gmail.com</a>
@@ -161,6 +200,7 @@ const skills = [
   { name: 'JavaScript', details: 'Compétences solides en JavaScript pour le développement frontend interactif. Expérience avec les frameworks modernes et les bonnes pratiques de codage.', level: 85 },
   { name: 'Vue.js', details: 'Conception d’interfaces utilisateur dynamiques et réactives. Expérience dans la création de SPA (Single Page Applications) avec une approche mobile-first.', level: 70 },
   { name: 'Python', details: 'Programmation orientée scripts et automatisation. Utilisation de Python pour l’analyse de données, l’IA et le Q-Learning avec des bibliothèques comme Matplotlib, NumPy.', level: 75 },
+  { name: 'Flutter', details: 'Développement d’applications mobiles cross-platform avec Flutter. Expérience dans la création d’interfaces utilisateur modernes et réactives.', level: 60 },
 ];
 
 const selectedSkill = ref(null);
@@ -169,19 +209,19 @@ const animationKey = ref(0);
 const projects = [
   { 
     name: 'Projet IA Réseau', 
-    description: 'Une application intelligente pour l\'analyse du trafic réseau, et l\'optimisation du routage grace à un algorithme d\'IA.',
+    description: 'C\'est un projet qui a pour but principal de rendre un reseau intelligent en optiomisant le fonctionnement du protocol de routage mise en place. Il s\'agit ici d\'un algorithme installer dans les machines du reseau, les rendant ainsi intéligente, et les permettre de communiquer avec les routeurs pour un choix du chemin optimal pour la communication',
     technologies: ['Python', 'Matplotlib', 'Numpy', 'Pandas', 'Scikit-learn', 'TKinter'],
     date: 'Juin - Septembre 2025'
   },
   { 
     name: 'Plateforme Scolaire', 
-    description: 'Plateforme complète de gestion complète d\'universités et écoles de formation avec tableau de bord et suivi des étudiants.',
+    description: 'Il s\'agit d\'une Plateforme complète de gestion d\'un établissement universitaire etd\'écoles de formation avec tableau de bord institutif et suivi des étudiants.',
     technologies: ['HTML/CSS', 'MYSQL', 'PHP', 'CodeIgniter'],
     date: 'Novembre 2023'
   },
   { 
     name: 'BIG DATA, Hadoop et Spark', 
-    description: 'Déploiement d\'un cluster à trois nœuds Hadoop avec Spark pour le traitement et l\'analyse de données massives.',
+    description: 'Déploiement d\'un cluster à trois nœuds Hadoop avec Spark pour le traitement et l\'analyse de données massives. c\'est un projet réalisé dans un cadre accedémique mais avec une rogueur et un encadrement professionnel, qui a permis de maitriser les outils et les technologies du big data, et de comprendre les enjeux liés à la gestion et à l\'analyse de grandes quantités de données.',
     technologies: ['Hadoop', 'Spark', 'Python'],
     date: 'Avril 2025'
   },

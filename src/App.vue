@@ -1,186 +1,226 @@
 <template>
-  <div id="app">
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-inner">
-        <div class="logo">Genie Levis's Portfolio</div>
+  <div class="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-50">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"></div>
+      <div class="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl"></div>
+    </div>
 
-        <div class="hamburger" @click="menuOpen = !menuOpen">☰</div>
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <button class="flex items-center gap-2 text-sm font-semibold tracking-[0.3em] text-cyan-200 uppercase" @click="changeTab('home')">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500">L</span>
+          Levis
+        </button>
 
-        <ul :class="['nav-links', { show: menuOpen }]">
-          <li class="" @click="changeTab('about')">À propos</li>
-          <li @click="changeTab('skills')">Compétences</li>
-          <li @click="changeTab('education')">Formation</li>
-          <li @click="changeTab('projects')">Projets</li>
-          <li @click="changeTab('contact')">Contact</li>
+        <button class="inline-flex items-center rounded-xl border border-white/10 p-2 text-slate-100 lg:hidden" @click="menuOpen = !menuOpen">
+          <span class="text-xl">☰</span>
+        </button>
+
+        <ul :class="['absolute left-4 right-4 top-16 flex-col gap-2 rounded-2xl border border-white/10 bg-slate-900/95 p-3 shadow-2xl lg:static lg:flex lg:flex-row lg:items-center lg:gap-6 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none', menuOpen ? 'flex' : 'hidden lg:flex']">
+          <li v-for="item in navItems" :key="item.href">
+            <button
+              class="w-full rounded-xl px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white lg:w-auto"
+              :class="activeTab === item.href ? 'bg-cyan-500/10 text-cyan-200' : ''"
+              @click="changeTab(item.href)"
+            >
+              {{ item.label }}
+            </button>
+          </li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
-    <!-- CONTENU -->
-    <main class="main">
-      <section id="about" class="section">
-        <div class="content-box fade-in">
-          <h1>Salut, moi c\’est NJIMI NJEUMEN Levis Jores</h1>
-          <p class="subtitle">Développeur Web • Ingénieur Réseau</p>
-          <div class="skills-container">
-            <div class="skills-left">
-            <div class="card">
-              <h1>
-                Profil
-              </h1>
-              <p style="font-family: 'Times New Roman', Times, serif; font-weight: bold; color: black; ">
-                Jeune dynamique et passionné par les nouvelles technologies, la programmation, 
-                les Réseaux et l'intelligence artificielle.
-                Je Travail chaque jour pour m'améliorer et me mettre a jour sur les dernieres technologies.
-                Je suis pationné par les Réseaux, L'intélligence artificielle notament son application dans les réseaux.
+    <main>
+      <section id="home" class="relative px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="animate-[fadeUp_0.8s_ease-out]">
+            <span class="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1 text-sm text-cyan-100">Développeur web • Réseaux • IA</span>
+            <h1 class="mt-6 text-5xl font-black tracking-tight text-white sm:text-6xl">
+              Bonjour, je suis <span class="bg-gradient-to-r from-cyan-300 via-sky-400 to-violet-400 bg-clip-text text-transparent">Levis Jores</span>
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Je conçois des solutions digitales modernes, performantes et intelligentes pour les entreprises, les projets éducatifs et les innovations technologiques.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <button class="rounded-2xl bg-gradient-to-r from-cyan-500 to-violet-500 px-6 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]" @click="changeTab('projects')">Voir mes projets</button>
+              <button class="rounded-2xl border border-white/15 px-6 py-3 font-semibold text-white transition hover:bg-white/5" @click="changeTab('contact')">Me contacter</button>
+            </div>
+            <div class="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p class="text-3xl font-bold text-white">3+</p>
+                <p class="text-sm text-slate-400">années d'expérience</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p class="text-3xl font-bold text-white">10+</p>
+                <p class="text-sm text-slate-400">projets réalisés</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p class="text-3xl font-bold text-white">100%</p>
+                <p class="text-sm text-slate-400">passion & rigueur</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative animate-[fadeUp_1s_ease-out]">
+            <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-cyan-400/20 to-violet-500/20 blur-2xl"></div>
+            <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/70 p-4 shadow-2xl shadow-cyan-500/5 backdrop-blur-xl">
+              <img src="./assets/soutenance.jpg" alt="Levis Jores" class="h-[520px] w-full rounded-[1.5rem] object-cover object-center" />
+              <div class="absolute bottom-8 left-8 rounded-2xl border border-white/10 bg-slate-900/80 p-4 backdrop-blur-md">
+                <p class="text-xs uppercase tracking-[0.3em] text-cyan-200">Disponible</p>
+                <p class="mt-1 text-sm text-slate-100">Freelance / projets innovants</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-slate-950/20 backdrop-blur-xl">
+          <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">À propos</p>
+              <h2 class="mt-3 text-3xl font-bold text-white">Un profil hybride entre développement, réseau et intelligence artificielle</h2>
+              <p class="mt-5 text-base leading-7 text-slate-300">
+                Jeune développeur dynamique et passionné, j’aime transformer des idées complexes en solutions utiles, simples et performantes. Mon parcours mêle programmation, administration réseau et exploration des applications de l’intelligence artificielle.
+              </p>
+              <p class="mt-4 text-base leading-7 text-slate-300">
+                Je travaille chaque jour à améliorer mes compétences, à apprendre les technologies émergentes et à créer des expériences numériques qui marquent.
               </p>
             </div>
-            </div>
-            <div class="skills-right">
-              <div class="skills">
-                <img src="../src/assets/soutenance.jpg" alt="ma photo" height="550" width="500" class="photopresentation">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+                <p class="text-sm text-cyan-200">Profil</p>
+                <p class="mt-2 text-sm leading-6 text-slate-300">Développeur web, passionné de logique, d’architecture applicative et de résolution de problèmes.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+                <p class="text-sm text-cyan-200">Vision</p>
+                <p class="mt-2 text-sm leading-6 text-slate-300">Créer des outils qui allient performance, sécurité, simplicité d’usage et impact réel.</p>
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      <section id="skills" class="section">
-        <div class="content-box fade-in">
-          <h1>Compétences</h1>
-          <div class="skills-container">
-            <div class="skills-left">
-              <div class="card skill" v-for="skill in skills" @click="selectSkill(skill)" :class="{ active: selectedSkill?.name === skill.name }">
-                <div class="skill-name">{{ skill.name }}</div>
+      <section id="skills" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">Compétences</p>
+              <h2 class="mt-3 text-3xl font-bold text-white">Technologies maîtrisées</h2>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div v-for="skill in skills" :key="skill.name" class="space-y-3">
+              <button
+                class="w-full rounded-2xl border p-5 text-left transition duration-300"
+                :class="selectedSkill?.name === skill.name ? 'border-cyan-400/50 bg-gradient-to-r from-cyan-500/15 to-violet-500/15' : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/8'"
+                @click="selectSkill(skill)"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white">{{ skill.name }}</span>
+                  <span class="text-sm text-cyan-200">{{ skill.level }}%</span>
+                </div>
+              </button>
 
-                <!-- Inline details shown on mobile under the clicked skill -->
-                <div class="skill-inline-details" v-if="selectedSkill?.name === skill.name" :key="animationKey">
-                  <div class="skill-details">
-                    <h3>{{ selectedSkill.name }}</h3>
-                    <p class="description">{{ selectedSkill.details }}</p>
-                    <div class="level">
-                      <div class="level-bar">
-                        <div class="level-fill" :style="{ width: selectedSkill.level + '%' }"></div>
-                      </div>
-                      <p class="level-text">Niveau: {{ selectedSkill.level }}%</p>
+              <transition name="detail-fade" appear>
+                <div v-if="selectedSkill?.name === skill.name" :key="animationKey" class="rounded-2xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/20">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-500 text-sm font-semibold text-slate-950">{{ skill.name.slice(0, 2) }}</span>
+                    <div>
+                      <p class="text-xs uppercase tracking-[0.3em] text-cyan-200">Expertise</p>
+                      <h3 class="text-xl font-semibold text-white">{{ skill.name }}</h3>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-base leading-7 text-slate-300">{{ skill.details }}</p>
+                  <div class="mt-5">
+                    <div class="flex items-center justify-between text-sm text-slate-400">
+                      <span>Niveau</span>
+                      <span>{{ skill.level }}%</span>
+                    </div>
+                    <div class="mt-2 h-3 overflow-hidden rounded-full bg-white/5">
+                      <div class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-700" :style="{ width: skill.level + '%' }"></div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </transition>
 
-            <div class="skills-right">
-              <div class="skill-details" v-if="selectedSkill" :key="animationKey">
-                <h3>{{ selectedSkill.name }}</h3>
-                <p class="description">{{ selectedSkill.details }}</p>
-                <div class="level">
-                  <div class="level-bar">
-                    <div class="level-fill" :style="{ width: selectedSkill.level + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-8">
+            <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">Expériences</p>
+            <h2 class="mt-3 text-3xl font-bold text-white">Parcours professionnel</h2>
+          </div>
+          <div class="grid gap-6 md:grid-cols-3">
+            <article v-for="item in experiences" :key="item.title" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/8">
+              <p class="text-sm text-cyan-200">{{ item.period }}</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">{{ item.title }}</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">{{ item.description }}</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-8">
+            <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">Projets</p>
+            <h2 class="mt-3 text-3xl font-bold text-white">Réalisations récentes</h2>
+          </div>
+          <div class="space-y-4">
+            <div v-for="project in projects" :key="project.name" class="space-y-3">
+              <button
+                class="w-full rounded-2xl border p-5 text-left transition duration-300"
+                :class="selectedProject?.name === project.name ? 'border-violet-400/50 bg-gradient-to-r from-violet-500/15 to-cyan-500/15' : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/8'"
+                @click="selectProject(project)"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-white">{{ project.name }}</span>
+                  <span class="text-sm text-violet-200">{{ project.date }}</span>
+                </div>
+              </button>
+
+              <transition name="detail-fade" appear>
+                <article v-if="selectedProject?.name === project.name" :key="animationKey" class="rounded-2xl border border-white/10 bg-slate-900/70 p-6 shadow-xl shadow-slate-950/20">
+                  <p class="text-sm uppercase tracking-[0.3em] text-violet-200">Projet sélectionné</p>
+                  <h3 class="mt-2 text-2xl font-semibold text-white">{{ project.name }}</h3>
+                  <p class="mt-5 text-base leading-7 text-slate-300">{{ project.description }}</p>
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    <span v-for="tech in project.technologies" :key="tech" class="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-200">{{ tech }}</span>
                   </div>
-                  <p class="level-text">Niveau: {{ selectedSkill.level }}%</p>
-                </div>
-              </div>
+                </article>
+              </transition>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="education" class="section">
-        <div class="content-box fade-in">
-          <h1>Formation</h1>
-          <div class="card">Licence Informatique – Réseaux & Systèmes</div>
-        </div>
-      </section>
-
-          <section id="projects" class="section">
-        <div class="content-box fade-in">
-          <h1>Expériences</h1>
-          <div class="projects-container">
-            <div class="projects-left">
-              <div class="card project" v-for="project in projects" @click="selectProject(project)" :class="{ active: selectedProject?.name === project.name }">
-                <div class="project-name">{{ project.name }}</div>
-
-                <!-- Inline project details shown on mobile under the clicked project -->
-                <div class="project-inline-details" v-if="selectedProject?.name === project.name" :key="animationKey">
-                  <div class="project-details">
-                    <h3>{{ selectedProject.name }}</h3>
-                    <p class="description">{{ selectedProject.description }}</p>
-                    <div class="technologies">
-                      <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
-                    </div>
-                    <p class="date">{{ selectedProject.date }}</p>
-                  </div>
-                </div>
-              </div>
+      <section id="contact" class="px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 p-8 backdrop-blur-xl">
+          <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">Contact</p>
+              <h2 class="mt-3 text-3xl font-bold text-white">Prêt à lancer votre prochain projet ?</h2>
+              <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300">Discutons de vos besoins, de vos idées et de la meilleure manière de les transformer en réalité.</p>
             </div>
-
-            <div class="projects-right">
-              <div class="project-details" v-if="selectedProject" :key="animationKey">
-                <h3>{{ selectedProject.name }}</h3>
-                <p class="description">{{ selectedProject.description }}</p>
-                <div class="technologies">
-                  <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
-                </div>
-                <p class="date">{{ selectedProject.date }}</p>
-              </div>
+            <div class="grid gap-4">
+              <a href="mailto:njiminjeumenlevis@gmail.com" class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-100 transition hover:bg-slate-800">
+                <span>Email</span>
+                <span class="text-sm text-cyan-200">njiminjeumenlevis@gmail.com</span>
+              </a>
+              <a href="https://wa.me/237673713395?text=Bonjour%20Levis" class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-100 transition hover:bg-slate-800">
+                <span>WhatsApp</span>
+                <span class="text-sm text-cyan-200">+237 673 713 395</span>
+              </a>
+              <a href="https://github.com/Levisjores" target="_blank" class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-100 transition hover:bg-slate-800">
+                <span>GitHub</span>
+                <span class="text-sm text-cyan-200">Levisjores</span>
+              </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="section">
-        <div class="content-box fade-in">
-          <h1>Projets</h1>
-          <div class="projects-container">
-            <div class="projects-left">
-              <div class="card project" v-for="project in projects" @click="selectProject(project)" :class="{ active: selectedProject?.name === project.name }">
-                <div class="project-name">{{ project.name }}</div>
-
-                <!-- Inline project details shown on mobile under the clicked project -->
-                <div class="project-inline-details" v-if="selectedProject?.name === project.name" :key="animationKey">
-                  <div class="project-details">
-                    <h3>{{ selectedProject.name }}</h3>
-                    <p class="description">{{ selectedProject.description }}</p>
-                    <div class="technologies">
-                      <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
-                    </div>
-                    <p class="date">{{ selectedProject.date }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="projects-right">
-              <div class="project-details" v-if="selectedProject" :key="animationKey">
-                <h3>{{ selectedProject.name }}</h3>
-                <p class="description">{{ selectedProject.description }}</p>
-                <div class="technologies">
-                  <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
-                </div>
-                <p class="date">{{ selectedProject.date }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    
-
-      <section id="contact" class="section">
-        <div class="content-box fade-in" style="display: inline;">
-          <h1> Contact</h1>
-          <div class="skills" >
-            WhatsApp: <a href="https://wa.me/237673713395?text=Bonjour ING">+237 673710473</a> / <a href="https://wa.me/237659710473?text=Bonjour ING">+237 659710473</a>
-          </div>
-          <div class="skills">
-            Email: <a href="mailto:njiminjeumenlevis@gmail.com">njiminjeumenlevis@gmail.com</a>
-          </div>
-          <div class="card">
-            github: <a href="https://github.com/Levisjores">Levisjores</a>
-          </div>
-          <div class="card">
-            Email / WhatsApp
           </div>
         </div>
       </section>
@@ -189,526 +229,92 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
-const activeTab = ref("about")
+import { ref } from 'vue'
+
+const activeTab = ref('home')
 const menuOpen = ref(false)
+const animationKey = ref(0)
+
+const navItems = [
+  { label: 'Accueil', href: 'home' },
+  { label: 'À propos', href: 'about' },
+  { label: 'Compétences', href: 'skills' },
+  { label: 'Expériences', href: 'experience' },
+  { label: 'Projets', href: 'projects' },
+  { label: 'Contact', href: 'contact' },
+]
 
 const skills = [
-  { name: 'PHP natif', details: 'Maîtrise avancée du langage PHP natif. Développement de solutions backend performantes, gestion de la logique métier et intégration avec des bases de données.', level: 90 },
-  { name: 'CodeIgniter', details: 'Expertise dans la création d’applications web robustes avec CodeIgniter. Mise en place de projets maintenables et évolutifs grâce à une architecture claire.', level: 75 },
-  { name: 'Laravel', details: 'Développement backend moderne avec Laravel. Gestion des API REST, authentification sécurisée, et intégration fluide avec des interfaces responsive.', level: 60 },
-  { name: 'JavaScript', details: 'Compétences solides en JavaScript pour le développement frontend interactif. Expérience avec les frameworks modernes et les bonnes pratiques de codage.', level: 85 },
-  { name: 'Vue.js', details: 'Conception d’interfaces utilisateur dynamiques et réactives. Expérience dans la création de SPA (Single Page Applications) avec une approche mobile-first.', level: 70 },
-  { name: 'Python', details: 'Programmation orientée scripts et automatisation. Utilisation de Python pour l’analyse de données, l’IA et le Q-Learning avec des bibliothèques comme Matplotlib, NumPy.', level: 75 },
-  { name: 'Flutter', details: 'Développement d’applications mobiles cross-platform avec Flutter. Expérience dans la création d’interfaces utilisateur modernes et réactives.', level: 60 },
-];
+  { name: 'PHP natif', details: 'Maîtrise avancée du langage PHP natif pour le développement backend, la logique métier et l’intégration avec les bases de données.', level: 90 },
+  { name: 'CodeIgniter', details: 'Création d’applications web robustes, maintenables et évolutives avec une architecture claire et performante.', level: 75 },
+  { name: 'Laravel', details: 'Développement d’API REST, d’outils métier et d’applications sécurisées avec un backend moderne.', level: 60 },
+  { name: 'JavaScript', details: 'Développement frontend interactif et optimisation des expériences utilisateur avec des bonnes pratiques solides.', level: 85 },
+  { name: 'Vue.js', details: 'Conception d’interfaces dynamiques, réactives et modernes pour des applications web de qualité.', level: 70 },
+  { name: 'Python', details: 'Scripts, automatisation, analyse de données et applications liées à l’intelligence artificielle.', level: 75 },
+  { name: 'Flutter', details: 'Création d’interfaces mobiles modernes et performantes avec une approche cross-platform.', level: 60 },
+]
 
-const selectedSkill = ref(null);
-const animationKey = ref(0);
+const experiences = [
+  {
+    title: 'Développeur web & réseau',
+    period: '2024 — Aujourd’hui',
+    description: 'Création d’outils web, gestion de projets techniques et optimisation des infrastructures réseau.',
+  },
+  {
+    title: 'Stage / projets académiques',
+    period: '2023 — 2024',
+    description: 'Mise en place de solutions digitales pour l’enseignement, la gestion universitaire et les environnements collaboratifs.',
+  },
+  {
+    title: 'Formation spécialisée',
+    period: '2022 — 2023',
+    description: 'Approfondissement sur les systèmes, les protocoles réseau, l’automatisation et les technologies modernes.',
+  },
+]
 
 const projects = [
-  { 
-    name: 'Projet IA Réseau', 
-    description: 'C\'est un projet qui a pour but principal de rendre un reseau intelligent en optiomisant le fonctionnement du protocol de routage mise en place. Il s\'agit ici d\'un algorithme installer dans les machines du reseau, les rendant ainsi intéligente, et les permettre de communiquer avec les routeurs pour un choix du chemin optimal pour la communication',
-    technologies: ['Python', 'Matplotlib', 'Numpy', 'Pandas', 'Scikit-learn', 'TKinter'],
-    date: 'Juin - Septembre 2025'
+  {
+    name: 'Projet IA Réseau',
+    description: 'Un système intelligent visant à optimiser le choix des chemins dans un réseau grâce à des mécanismes d’analyse et de décision automatisés.',
+    technologies: ['Python', 'Matplotlib', 'Numpy', 'Pandas', 'Scikit-learn', 'Tkinter'],
+    date: '2025',
   },
-  { 
-    name: 'Plateforme Scolaire', 
-    description: 'Il s\'agit d\'une Plateforme complète de gestion d\'un établissement universitaire etd\'écoles de formation avec tableau de bord institutif et suivi des étudiants.',
-    technologies: ['HTML/CSS', 'MYSQL', 'PHP', 'CodeIgniter'],
-    date: 'Novembre 2023'
+  {
+    name: 'Plateforme Scolaire',
+    description: 'Une solution complète de gestion universitaire incluant tableau de bord, gestion des étudiants et suivi des ressources pédagogiques.',
+    technologies: ['HTML/CSS', 'MySQL', 'PHP', 'CodeIgniter'],
+    date: '2023',
   },
-  { 
-    name: 'BIG DATA, Hadoop et Spark', 
-    description: 'Déploiement d\'un cluster à trois nœuds Hadoop avec Spark pour le traitement et l\'analyse de données massives. c\'est un projet réalisé dans un cadre accedémique mais avec une rogueur et un encadrement professionnel, qui a permis de maitriser les outils et les technologies du big data, et de comprendre les enjeux liés à la gestion et à l\'analyse de grandes quantités de données.',
+  {
+    name: 'Big Data Hadoop & Spark',
+    description: 'Déploiement d’un cluster de traitement et d’analyse de données massives avec une approche orientée apprentissage pratique.',
     technologies: ['Hadoop', 'Spark', 'Python'],
-    date: 'Avril 2025'
+    date: '2025',
   },
-];
+]
 
-const selectedProject = ref(null);
+const selectedSkill = ref(skills[0])
+const selectedProject = ref(projects[0])
 
 function changeTab(tab) {
+  activeTab.value = tab
   menuOpen.value = false
-  // Scroll vers la section avec un délai pour fermer le menu d'abord
   setTimeout(() => {
     const element = document.getElementById(tab)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, 100)
 }
 
 const selectSkill = (skill) => {
-  selectedSkill.value = skill;
-  animationKey.value++;
-};
+  selectedSkill.value = skill
+  animationKey.value++
+}
 
 const selectProject = (project) => {
-  selectedProject.value = project;
-  animationKey.value++;
-};
+  selectedProject.value = project
+  animationKey.value++
+}
 </script>
 
-<style>
-.photopresentation
-{
-  border-radius: 8%;
-  box-shadow: 0 15px 35px rgba(6, 148, 243, 0.5);
-  border-style: inset;
-
-}
-/* RESET IMPORTANT */
-* {
-  box-sizing: border-box;
-}
-
-#app {
-
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* FOND GLOBAL */
-#app {
-  background: linear-gradient(90deg, #000000 30%,#2cb681 100%, #00eb1ffa 100%);
-  min-height: 100vh;
-  min-width: 100%;
-}
-
-/* NAVBAR */
-.navbar {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-}
-
-.nav-inner {
-  width: 100%;
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-}
-
-
-.logo {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links li {
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-.nav-links li:hover {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-}
-
-.hamburger {
-  display: none;
-  font-size: 1.6em;
-  cursor: pointer;
-  scroll-behavior: smooth;
-}
-
-/* MAIN */
-.main {
-  padding-top: 100px;
-  width: 100%;
-  scroll-behavior: smooth;
-}
-
-/* SECTION PREND TOUTE LA LARGEUR */
-.section {
-  width: 100%;
-  padding: 40px 0%;
-  display: flex;
-  justify-content: center;
-  min-height: auto;
-  scroll-margin-top: 100px;
-}
-
-
-/* CONTENU CENTRÉ */
-.content-box {
-  width: 100%;
-  text-align: center;
-  color: rgb(255, 255, 255);
-}
-
-
-.subtitle {
-  opacity: 0.9;
-  margin-bottom: 20px;
-}
-
-/* CARDS */
-.card {
-  background: white;
-  color: #333;
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  margin-top: 20px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* COMPETENCES CONTAINER */
-.skills-container {
-  display: flex;
-  /*gap: 30px;*/
-  margin-top: 30px;
-}
-
-
-.skills-left {
-  width: 50%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-
-}
-
-.skills-right {
-  width: 50%;
-  display: flex;
-  align-items: flex-start;
-  padding-left: 20px;
-}
-
-.skill {
-  background: linear-gradient(135deg, #4facfe 50%, #1db6a9);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 3px solid transparent;
-}
-
-.skill:hover {
-background: linear-gradient(135deg, #2cb681 50%, #51f704);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.skill.active {
-background: linear-gradient(135deg, #2cb681 50%, #51f704);
-  border-color: white;
-  box-shadow: 0 25px 50px rgba(79, 172, 254, 0.4);
-}
-
-.skill-details {
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
-  padding: 20px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-  animation: slideIn 0.5s ease;
-  width: 100%;
-  
-}
-
-/* Inline details hidden by default (desktop) — shown on mobile via media query */
-.skill-inline-details {
-  display: none;
-}
-
-/* Inline project details hidden by default (desktop) */
-.project-inline-details {
-  display: none;
-}
-
-.skill-details h3 {
-  font-size: 1.8em;
-  color: #667eea;
-  margin-bottom: 15px;
-}
-
-.skill-details .description {
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.level {
-  margin-top: 30px;
-}
-
-.level-bar {
-  background: #e0e0e0;
-  border-radius: 10px;
-  height: 12px;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
-
-.level-fill {
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  height: 100%;
-  transition: width 0.6s ease;
-}
-
-.level-text {
-  font-size: 0.95em;
-  color: #999;
-  font-weight: 600;
-}
-
-/* PROJETS CONTAINER */
-.projects-container {
-  display: flex;
-  gap: 30px;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.projects-left {
-  width: 50%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.projects-right {
-  width: 50%;
-}
-
-.project {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 3px solid transparent;
-}
-
-.project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.project.active {
-  border-color: white;
-  box-shadow: 0 25px 50px rgba(245, 87, 108, 0.4);
-}
-
-.project-details {
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
-  padding: 40px;
-  border-radius: 18px;
-  border-style: groove;
-  border: linear-gradient(135deg, #f093fb 30%, #f5576c 100%);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-  animation: slideIn 0.5s ease;
-  width: 100%;
-}
-
-.project-details h3 {
-  font-size: 1.8em;
-  color: #667eea;
-  margin-bottom: 15px;
-}
-
-.project-details .description {
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 25px;
-}
-
-.technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.tech-tag {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.9em;
-  font-weight: 600;
-}
-
-.project-details .date {
-  color: #14c06a;
-  font-size: 0.95em;
-  margin-top: 20px;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* ANIMATION */
-.fade-in {
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    right: 20px;
-    top: 65px;
-    flex-direction: column;
-    background: rgba(0,0,0,0.9);
-    padding: 15px;
-    border-radius: 10px;
-    display: none;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .skills-container,
-  .projects-container {
-    flex-direction: column;
-  }
-
-  .skills-left,
-  .projects-left,
-  .skills-right,
-  .projects-right {
-    width: 100%;
-  }
-
-  /* Remove left margin and add inner padding so items fit the screen */
-  .skills-left,
-  .projects-left {
-    margin-left: 0;
-    padding: 0 5%;
-  }
-
-  /* Add some horizontal padding to the content box on small screens */
-  .content-box {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  /* Hide the right-side details on mobile — we'll show inline details instead */
-  .skills-right {
-    display: none;
-  }
-
-  /* Hide right-side details for skills and projects on mobile */
-  .skills-right {
-    display: none;
-  }
-
-  .projects-right {
-    display: none;
-  }
-
-  /* Inline details placed under each skill / project card on mobile */
-  .skill-inline-details,
-  .project-inline-details {
-    display: block;
-    margin-top: 12px;
-  }
-}
-.content {
-  display: flex;
-}
-
-/* DESKTOP: ensure skills/projects take full available width */
-@media (min-width: 769px) {
-  .projects-container {
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-    gap: 40px;
-  }
-
-  .skills-container {
-    width: 100vw;
-    gap: 40px;
-  }
-
-  /* Make content use full width on desktop and keep small horizontal padding */
-  .content-box {
-    
-    width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-
-  /* Ensure the two-column layout fills the row and is centered */
-  .skills-container,
-  .projects-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .skills-left,
-  .projects-left {
-    flex: 0 0 48%;
-    width: 48%;
-    margin-left: 0;
-    display: block;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    
-  }
-
-  .skills-right,
-  .projects-right {
-    flex: 0 0 48%;
-    width: 48%;
-    margin-left: 0;
-    display: block;
-  }
-}
-</style>

@@ -47,11 +47,11 @@
             </div>
             <div class="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                <p class="text-3xl font-bold text-white">3+</p>
+                <p class="text-3xl font-bold text-white">1+</p>
                 <p class="text-sm text-slate-400">années d'expérience</p>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                <p class="text-3xl font-bold text-white">10+</p>
+                <p class="text-3xl font-bold text-white">03+</p>
                 <p class="text-sm text-slate-400">projets réalisés</p>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
@@ -79,7 +79,7 @@
           <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">À propos</p>
-              <h2 class="mt-3 text-3xl font-bold text-white">Un profil hybride entre développement, réseau et intelligence artificielle</h2>
+              <h2 class="mt-3 text-3xl font-bold text-white">Un profil hybride entre développement, Administration réseau et intelligence artificielle</h2>
               <p class="mt-5 text-base leading-7 text-slate-300">
                 Jeune développeur dynamique et passionné, j’aime transformer des idées complexes en solutions utiles, simples et performantes. Mon parcours mêle programmation, administration réseau et exploration des applications de l’intelligence artificielle.
               </p>
@@ -256,40 +256,40 @@ const skills = [
 
 const experiences = [
   {
-    title: 'Développeur web & réseau',
-    period: '2024 — Aujourd’hui',
-    description: 'Création d’outils web, gestion de projets techniques et optimisation des infrastructures réseau.',
+    title: 'Développeur Full-Stack',
+    period: 'Février 2026 — Aujourd’hui',
+    description: 'Maintenance, amélioration et déploiement des mises à jour d\'une application de gestion d\'une agence de voyage.',
   },
   {
-    title: 'Stage / projets académiques',
-    period: '2023 — 2024',
-    description: 'Mise en place de solutions digitales pour l’enseignement, la gestion universitaire et les environnements collaboratifs.',
+    title: 'Stagiaire réseau',
+    period: 'Juillet 2025 — Septembre 2025',
+    description: 'Assistance technique et support aux utilisateurs dans le cadre de l\'exploitation et de la maintenance des infrastructures réseau. étude et proposition d\'une solution d\'optimisation du routage réseau basé sur un algorithme d\intélligence artificielle.',
   },
   {
-    title: 'Formation spécialisée',
-    period: '2022 — 2023',
-    description: 'Approfondissement sur les systèmes, les protocoles réseau, l’automatisation et les technologies modernes.',
+    title: 'Stagiaire en Développement Web',
+    period: 'Juillet 2024 — Septembre 2024',
+    description: 'Analyse et développement d\'une solution web de gestion d\'un établissement universitaire, incluant un dashboard de suivi, la gestion des étudiants, des notes j\'usqu\'à la génération des borderaux de notes et d\'autres documents pédagogiques.',
   },
 ]
 
 const projects = [
   {
     name: 'Projet IA Réseau',
-    description: 'Un système intelligent visant à optimiser le choix des chemins dans un réseau grâce à des mécanismes d’analyse et de décision automatisés.',
+    description: 'Un système intelligent visant à optimiser le choix des chemins dans un réseau grâce à des mécanismes d’analyse et de décision automatisés et guidé par un agent d’intélligence artificielle, se basant sur le flux réseau en temps réel.',
     technologies: ['Python', 'Matplotlib', 'Numpy', 'Pandas', 'Scikit-learn', 'Tkinter'],
     date: '2025',
   },
   {
-    name: 'Plateforme Scolaire',
-    description: 'Une solution complète de gestion universitaire incluant tableau de bord, gestion des étudiants et suivi des ressources pédagogiques.',
-    technologies: ['HTML/CSS', 'MySQL', 'PHP', 'CodeIgniter'],
-    date: '2023',
-  },
-  {
     name: 'Big Data Hadoop & Spark',
-    description: 'Déploiement d’un cluster de traitement et d’analyse de données massives avec une approche orientée apprentissage pratique.',
-    technologies: ['Hadoop', 'Spark', 'Python'],
+    description: 'Déploiement d’un cluster de trois nœuds pour le traitement et l’analyse de données massives avec une approche orientée apprentissage pratique.',
+    technologies: ['Hadoop', 'Spark', 'YARN'],
     date: '2025',
+  },
+    {
+    name: 'Plateforme Scolaire',
+    description: 'Une solution complète de gestion universitaire incluant tableau de bord, gestion des étudiants, suivi des ressources pédagogiques.',
+    technologies: ['HTML/CSS', 'MySQL', 'PHP', 'CodeIgniter'],
+    date: '2024',
   },
 ]
 
